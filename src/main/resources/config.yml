@@ -1,0 +1,242 @@
+Options:
+  save-task-interval: 300 #time in seconds that data is saved.
+  mysql: false
+  host: 'localhost'
+  database: 'server'
+  user: 'root'
+  pass: 'password'
+  port: 3306
+ 
+Messages:
+  bc_msg: "&2&lAlphaSystem &a>> &2%player% &ahas been punished for &2%reason%&a." #Broadcast message requires permission node! (alphasystem.receive)
+  punished_msg: '&2&lAlphaSystem &a>> &2%player% &ahas been punished for &2%reason%&a. Infractions: %infractions%.'
+  forgive_msg: "&2&lAlphaSystem &a>>&b &2%player% &ahas been forgiven for &2%reason%&a. Infractions: %infractions%."
+  set_msg: "&2&lAlphaSystem &a>> &2%player% &avl for &2%reason%&a has been set to: %infractions%."
+  no_type: "&2&lError &a>>&a There is no type for &2%reason%&a."
+  no_player: '&2&lError &a>> &2%player%&a does not exist.'
+  no_vio: '&2&lError &a>> &2%player%&a does not have any violations.'
+  no_perm: '&2&lAlphaSystem &a>> You do not have access to that command.'
+  check_points: '&2&lAlphaSystem &a>> &2%player% &ais at &2%infractions%&a for &2%reason%&a.'
+  data_saved: '&2&lAlphaSystem &a>> &aAll data and logs saved successfully.'
+Log:
+  addition: "%time% | %sender% has punished %player% for %reason%. Infractions: %infractions%"
+  removal: '%time% | %sender% has forgiven %player% for %reason%. Infractions: %infractions%'
+  set: '%time% | %sender% has set the infractions of %player% for %reason% %infractions%'
+Categories:
+  spam:
+    identifiers:
+      - ad
+      - ads
+      - advertising
+      - caps
+      - spambot
+    addition:
+      1:
+        - 'tellraw %player% {"text":"You have been warned for spam."}'
+      2:
+        - 'mute %player% 1 hour'
+      3:
+        - 'mute %player% 6 hours'
+      4:
+        - 'mute %player% 24 hours'
+      5:
+        - 'mute %player% 48 hours'
+      6:
+        - 'mute %player% 72 hours'
+    removal:
+      0:
+        - 'unmute %player%'
+      1:
+        - 'unmute %player%'
+      2:
+        - 'unmute %player%'
+      3:
+        - 'unmute %player%'
+      4:
+        - 'unmute %player%'
+      5:
+        - 'unmute %player%'
+    expire:
+      active: true
+# Possible modes
+# FullReset / resets all violations
+# Decrease / reduce 1 everytime the expire code runs
+# Manual / this means having a different command to run instead of removal commands
+      mode: FullReset
+      cooldown: 3600 #In secords
+# Comands to be executed only if the mode is Manual
+      commands:
+        0:
+        - 'inf remove %player% spam 1'
+  combat:
+    identifiers:
+      - aimbot
+      - angle
+      - attackfrequency
+      - aimbot
+      - aimassist
+      - antiknockback
+      - autoclicker
+      - aura
+      - clickaura
+      - clickpattern
+      - criticals
+      - cps
+      - crits
+      - direction
+      - fastbow
+      - improbable
+      - instantbow
+      - inventoryhit
+      - killaura
+      - legitaura
+      - noswing
+      - pitchpattern
+      - reach
+      - regen
+      - tpaura
+    addition:
+      1: []
+      2:
+        - 'kick %player% Using combat cheats'
+      3:
+        - 'ban %player% Combat cheats'
+    removal:
+      0:
+        - 'unban %player%'
+      1: []
+      2:
+        - 'unban %player%'
+    expire:
+      active: true
+# Possible modes
+# FullReset / resets all violations
+# Decrease / reduce 1 everytime the expire code runs
+# Manual / this means having a different command to run instead of removal commands
+      mode: Decrease
+      cooldown: 3600 #In secords
+# Comands to be executed only if the mode is Manual
+      commands:
+        0: []
+  movement:
+    identifiers:
+      - airjump
+      - blink
+      - boatfly
+      - bhop
+      - bunnyhop
+      - elytrafly
+      - extraelytra
+      - fastfall
+      - fastladder
+      - fly
+      - flyingfrequency
+      - glide
+      - hclip
+      - jesus
+      - longjump
+      - lowhop
+      - morepackets
+      - nofall
+      - noslow
+      - omnisprint
+      - packetsneak
+      - passable
+      - phase
+      - selfhit
+      - speed
+      - spider
+      - step
+      - vclip
+      - yclip
+    addition:
+      1: []
+      2:
+        - 'kick %player% Using movement cheats'
+      3:
+        - 'ban %player% Movement cheats'
+    removal:
+      0:
+        - 'unban %player%'
+      1: []
+      2:
+        - 'unban %player%'
+    expire:
+      active: true
+# Possible modes
+# FullReset / resets all violations
+# Decrease / reduce 1 everytime the expire code runs
+# Manual / this means having a different command to run instead of removal commands
+      mode: Decrease
+      cooldown: 3600 #In secords
+# Comands to be executed only if the mode is Manual
+      commands:
+        0:
+        - 'inf remove %player% movement 1'
+  world:
+    identifiers:
+      - bedfucker
+      - cheststeal
+      - chestesp
+      - civbreak
+      - derp
+      - fastplace
+      - fastbreak
+      - fasteat
+      - freecam
+      - ghosthand
+      - headless
+      - inventorymove
+      - keepalive
+      - noweb
+      - nuker
+      - packetsneak
+      - playeresp
+      - scaffold
+      - tower
+    addition:
+      1: []
+      2:
+        - 'kick %player% Using world cheats'
+      3:
+        - 'ban %player% world cheats'
+    removal:
+      0:
+        - 'unban %player%'
+      1: []
+      2:
+        - 'unban %player%'
+    expire:
+      active: false
+# Possible modes
+# FullReset / resets all violations
+# Decrease / reduce 1 everytime the expire code runs
+# Manual / this means having a different command to run instead of removal commands
+      mode: Manual
+      cooldown: 3600 #In seconds
+# Comands to be executed only if the mode is Manual
+      commands:
+        0:
+        - 'inf remove %player% world 1'
+  banavoid:
+    identifiers:
+      - alt
+      - alts
+    addition:
+      1:
+        - 'banip %player% &cYou have been banned for ban avoiding.'
+    removal:
+      0:
+        - 'unban %player%'
+    expire:
+      active: false
+# Possible modes
+# FullReset / resets all violations
+# Decrease / reduce 1 everytime the expire code runs
+# Manual / this means having a different command to run instead of removal commands
+      mode: FullReset
+      cooldown: 3600 #In secords
+# Comands to be executed only if the mode is Manual
+      commands:
+        0:
+        - 'inf remove %player% spam 1'
